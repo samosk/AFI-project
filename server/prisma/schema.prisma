@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model MenuItem {
+  id          Int          @id @default(autoincrement())
+  name        String       @db.VarChar(100)
+  description String?      @db.Text
+  category    String       @db.VarChar(50)
+  price       Decimal      @db.Decimal(10, 2)
+  imageUrl    String?      @db.VarChar(255) @map("image_url")
+  isAvailable Boolean      @default(true) @map("is_available")
+
+  ticketItems TicketItem[]
+
+  @@map("menu_items")
+}
+
+model Ticket {
+  id        Int          @id @default(autoincrement())
+  tableId   String       @db.VarChar(50) @map("table_id")
+  status    TicketStatus @default(PLACED)
+  createdAt DateTime     @default(now()) @db.Timestamptz() @map("created_at")
+  updatedAt DateTime     @updatedAt @db.Timestamptz() @map("updated_at")
+
+  items     TicketItem[]
+
+  @@map("tickets")
+}
+
+model TicketItem {
+  id         Int      @id @default(autoincrement())
+  ticketId   Int      @map("ticket_id")
+  menuItemId Int      @map("menu_item_id")
+  quantity   Int      @default(1)
+  comment    String?  @db.Text
+  price      Decimal  @db.Decimal(10, 2)
+
+  ticket     Ticket   @relation(fields: [ticketId], references: [id])
+  menuItem   MenuItem @relation(fields: [menuItemId], references: [id])
+
+  @@map("ticket_items")
+}
+
+enum TicketStatus {
+  PLACED    // Gästen har skickat beställningen
+  COOKING   // Köket har börjat tillaga
+  DONE      // Maten är klar att servera
+
+  @@map("ticket_status")
+}
