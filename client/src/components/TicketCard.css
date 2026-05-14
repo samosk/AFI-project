@@ -1,0 +1,105 @@
+.ticket-card {
+  background: #fff;
+  border: 1px solid #e8e8e4;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: border-color 0.2s;
+}
+
+.ticket-card.status-placed {
+  border-left: 4px solid #e8a030;
+}
+
+.ticket-card.status-cooking {
+  border-left: 4px solid #d05538;
+}
+
+.ticket-card.status-done {
+  border-left: 4px solid #1d9e75;
+  opacity: 0.6;
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-id {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.ticket-time {
+  font-size: 0.78rem;
+  opacity: 0.5;
+}
+
+.status-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.status-badge.placed {
+  background: #faeeda;
+  color: #854f0b;
+}
+
+.status-badge.cooking {
+  background: #faece7;
+  color: #993c1d;
+}
+
+.status-badge.done {
+  background: #e1f5ee;
+  color: #0f6e56;
+}
+
+.ticket-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ticket-item {
+  font-size: 0.88rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: baseline;
+}
+
+.ticket-qty {
+  font-weight: 600;
+  min-width: 22px;
+}
+
+.ticket-comment {
+  font-size: 0.78rem;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.status-btn {
+  margin-top: 0.3rem;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.status-btn:active {
+  opacity: 0.8;
+}

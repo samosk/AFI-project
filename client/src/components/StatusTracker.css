@@ -1,0 +1,70 @@
+.status-tracker {
+  padding: 1.5rem 1rem;
+}
+
+.status-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.status-steps::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: #e0e0e0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 1;
+}
+
+.step-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.step.active .step-dot {
+  background: #1a1a1a;
+  transform: scale(1.15);
+}
+
+.step-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.4;
+}
+
+.step.active .step-label {
+  opacity: 1;
+}
+
+.ticket-items-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.ticket-item-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.item-price {
+  font-weight: 600;
+  opacity: 0.8;
+}

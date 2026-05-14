@@ -1,31 +1,21 @@
-import express from 'express'
-import cors from 'cors'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
 import dotenv from 'dotenv'
+import app from './app'
+import { setupKitchenSocket } from './socket/kitchenSocket'
 
 dotenv.config()
 
-const app = express()
 const httpServer = createServer(app)
+
 const io = new Server(httpServer, {
-  cors: { origin: 'http://localhost:5173' }
+  cors: { origin: 'http://localhost:5173' },
 })
 
-app.use(cors())
-app.use(express.json())
+setupKitchenSocket(io)
 
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' })
-})
-
-io.on('connection', (socket) => {
-  console.log('Client connected:', socket.id)
-
-  socket.on('disconnect', () => {
-    console.log('Client disconnected:', socket.id)
-  })
-})
+// Gör io tillgänglig för routes via app
+app.set('io', io)
 
 const PORT = process.env.PORT || 3001
 httpServer.listen(PORT, () => {
