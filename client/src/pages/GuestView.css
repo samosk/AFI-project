@@ -4,24 +4,23 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: var(--bg);
 }
 
 .guest-header {
   padding: 1.5rem 1rem 1rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, var(--bg));
 }
 
 .guest-header h1 {
   font-size: 1.3rem;
   font-weight: 700;
-  margin: 0;
   text-transform: capitalize;
 }
 
 .guest-header p {
   font-size: 0.85rem;
-  opacity: 0.5;
+  color: color-mix(in srgb, var(--fg) 50%, var(--bg));
   margin: 0.2rem 0 0;
 }
 
@@ -34,8 +33,8 @@
 .error-msg {
   margin: 0.75rem 1rem;
   padding: 0.6rem 0.8rem;
-  background: #faece7;
-  color: #993c1d;
+  background: color-mix(in srgb, var(--accent) 15%, var(--bg));
+  color: var(--accent);
   border-radius: 8px;
   font-size: 0.85rem;
 }
@@ -43,8 +42,8 @@
 .done-msg {
   margin: 0.75rem 1rem;
   padding: 0.6rem 0.8rem;
-  background: #e1f5ee;
-  color: #0f6e56;
+  background: color-mix(in srgb, var(--fg) 8%, var(--bg));
+  color: var(--fg);
   border-radius: 8px;
   font-size: 0.85rem;
 }
